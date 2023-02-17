@@ -29,7 +29,7 @@ public final class Constants {
    public static final int PULL_MOTOR = 55;
 
    //SPEED VALUES
-   public static final double DRIVE_SPEED = 0.8;
+   public static final double DRIVE_SPEED = -0.8;
    public static final double TURN_POWER = 0.3;
    public static final double WINCH_SPEED = 0.6;
    //Turn speed 
@@ -43,6 +43,7 @@ public final class Constants {
    //Feeder Speed
    public static final double FEEDER_SPEED = 0.8;
    //Xbox controller
+   public static final int RIGHT_Z_AXIS = 2;
    public static final int LEFT_Y_AXIS = 1;
    public static final int LEFT_X_AXIS = 0;
    
@@ -55,7 +56,8 @@ public final class Constants {
    //shooter speed
    public static final double SHOOTER_SPEED = 0.8;
    
-   
+   //Claw
+   public static final int CLOSE_CLAW = 8;
    
    
    //Button IDs

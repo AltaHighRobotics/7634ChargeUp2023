@@ -59,11 +59,10 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     CommandScheduler.getInstance().setDefaultCommand(m_driveSub, m_driveCommand);
-    //CommandScheduler.getInstance().setDefaultCommand(m_turnThingySub,m_TurnThingyLeftCommand);
     CommandScheduler.getInstance().setDefaultCommand(m_winchSub, m_liftWinchCommand);
     CommandScheduler.getInstance().setDefaultCommand(m_turnThingySub,m_TurnThingyRightCommand);
-    CommandScheduler.getInstance().schedule(m_extendArmCommand);
-    
+    //CommandScheduler.getInstance().schedule(m_extendArmCommand);
+    //CommandScheduler.getInstance().setDefaultCommand(m_turnThingySub,m_TurnThingyLeftCommand);
   }
 
   /**

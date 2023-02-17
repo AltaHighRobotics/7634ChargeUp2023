@@ -12,9 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class CompressorSub extends SubsystemBase {
 
   private final Solenoid extendCompressor;
+  private final Solenoid closeCompressor;
+
   /** Creates a new CompreesorSub. */
   public CompressorSub() {
     extendCompressor = new Solenoid(PneumaticsModuleType.REVPH, Constants.LIFT_ARM);
+    closeCompressor  = new Solenoid(PneumaticsModuleType.REVPH, Constants.CLOSE_CLAW);
   }
 
   @Override
@@ -22,12 +25,15 @@ public class CompressorSub extends SubsystemBase {
     // This method will be called once per scheduler run
   }
   public void extendArm(){
-    extendCompressor.set(true);
+    extendCompressor.set(false);
+    closeCompressor.set(true);
     System.out.println("True");
     SmartDashboard.putBoolean("Compressor", true);
   }
   public void squishArm(){
-    extendCompressor.set(false);
+    extendCompressor.set(true);
+    closeCompressor.set(false);
+
     System.out.println("False");
     SmartDashboard.putBoolean("Compressor", false);
   }

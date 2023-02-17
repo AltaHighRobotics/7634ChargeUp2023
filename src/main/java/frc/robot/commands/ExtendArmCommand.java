@@ -33,14 +33,15 @@ public class ExtendArmCommand extends CommandBase {
     phCompressor.enableDigital();
      //boolean enable = phCompressor.enabled();                                   
      //boolean pressureSwitch = phCompressor.getPressureSwitchValue();
-     //double curent = phCompressor.getCurrent();
+     double current = phCompressor.getCurrent();
   
-    //System.out.println("Arm Command works.");
+    System.out.println("claw open");
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    System.out.println("claw close");
     m_compressorSub.squishArm();
 
   }

@@ -29,7 +29,7 @@ public class turnThingyLeftCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    rightStickY = m_xboxController.getRawAxis(2); //lef z axis
+    rightStickY = m_xboxController.getRawAxis(Constants.RIGHT_Z_AXIS); //lef z axis
     m_turnThingySub.turnLeftWitch(rightStickY*Constants.TURN_SPEED);
     
   }
