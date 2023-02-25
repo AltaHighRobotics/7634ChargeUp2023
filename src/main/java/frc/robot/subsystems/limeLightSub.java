@@ -17,7 +17,7 @@ public class limeLightSub extends SubsystemBase {
 
   public limeLightSub() {
     limeLight = new LimeLight();
-    limeLight.setPipeline(Constants.LIMELIGHT_PIPELINE);
+    limeLight.setPipeline(Constants.USB_CAMERA_NAME);
     limeLight.setCamMode(CamMode.kvision);
   }
 

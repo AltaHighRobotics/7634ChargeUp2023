@@ -30,10 +30,10 @@ public final class Constants {
 
    //SPEED VALUES
    public static final double DRIVE_SPEED = -0.8;
-   public static final double TURN_POWER = 0.3;
+   public static final double TURN_POWER = 0.7;
    public static final double WINCH_SPEED = 0.6;
    //Turn speed 
-   public static final double TURN_SPEED = 0.5;
+   public static final double BIG_GEAR = 0.8;
    //Puller speed
 
    public static final double PULL_SPEED = 0.5;
@@ -89,7 +89,7 @@ public final class Constants {
 
 
    //LimeLight sub
-   public static final int LIMELIGHT_PIPELINE = 0;
+   public static final int USB_CAMERA_NAME = 0;
 
 }
 

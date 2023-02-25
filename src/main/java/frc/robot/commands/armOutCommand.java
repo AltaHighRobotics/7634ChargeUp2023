@@ -25,7 +25,7 @@ public class armOutCommand extends CommandBase {
   @Override
   public void execute() {
 
-    m_smoothArmSub.ArmOut();
+    m_smoothArmSub.CanWePutArmOut();
   }
 
   // Called once the command ends or is interrupted.

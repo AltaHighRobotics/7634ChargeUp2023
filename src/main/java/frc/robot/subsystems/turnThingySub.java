@@ -5,8 +5,8 @@
 package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-  
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -26,12 +26,9 @@ public class turnThingySub extends SubsystemBase {
     // This method will be called once per scheduler run
 
   }
-  public void turnLeftWitch(double turnSpeed){
-    m_TurnMotor.set(VictorSPXControlMode.PercentOutput,turnSpeed);
-
-  }
-  public void turnRightWitch(){
-    m_TurnMotor.set(VictorSPXControlMode.PercentOutput,Constants.TURN_SPEED);
+  public void turnLeftRight(double speed){
+    m_TurnMotor.set(VictorSPXControlMode.PercentOutput,speed*Constants.BIG_GEAR);
+    SmartDashboard.putBoolean("whole arm turn", true);
 
   }
   public void turnStop(){

@@ -36,11 +36,12 @@ public class RobotContainer {
   private CompressorSub m_compressorSub = new CompressorSub();
   private turnThingySub m_turnThingySub = new turnThingySub();
   private smoothArmSub m_SmoothArmSub = new smoothArmSub();
-  private photonVisionSub m_PhotonVisionSub = new photonVisionSub();
+  private VisionSubsystem m_VisionSub = new VisionSubsystem();
+
   //commands
   private DriveCommand m_driveCommand = new DriveCommand(m_driveSub, xboxController);
   private LiftWinchCommand m_liftWinchCommand = new LiftWinchCommand(m_winchSub,shooterController);
-  //private PhotonVisionCommand m_PhotonVisionCommand = new PhotonVisionCommand(m_PhotonVisionSub, m_driveSub);
+  private PhotonVisionCommand m_PhotonVisionCommand = new PhotonVisionCommand(m_driveSub, m_VisionSub);
   //private LowerWinchCommand m_lowerWinchCommand = new LowerWinchCommand(m_winchSub);
   //private ShootCommand m_shootCommand = new ShootCommand(m_shooterSub);
   //private PullerCommand m_pullerCommand = new PullerCommand(m_pullerSub);
@@ -74,7 +75,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     //final JoystickButton feedButton = new JoystickButton(xboxController, Constants.XBOX_B_BUTTON);
     final JoystickButton armExtendButton = new JoystickButton(shooterController, Constants.XBOX_A_BUTTON);
-    //final JoystickButton stopPhotonVision = new JoystickButton(shooterController,Constants.FLIGHT_BUTTON_12);
+    final JoystickButton stopPhotonVision = new JoystickButton(shooterController,Constants.FLIGHT_BUTTON_12);
     final POVButton smooarmButtton = new POVButton(shooterController, 0);
     final POVButton inArmButton = new POVButton(shooterController, 180);
     //final JoystickButton squishArmButton = new JoystickButton(shooterController, Constants.XBOX_B_BUTTON);
@@ -97,8 +98,8 @@ public class RobotContainer {
     
     //feedButton.toggleWhenPressed(m_feederCommand);
 
-    armExtendButton.whileTrue(m_extendArmCommand);
-    //stopPhotonVision.whileFalse(m_PhotonVisionCommand);
+    armExtendButton.toggleOnTrue(m_extendArmCommand);
+    stopPhotonVision.toggleOnTrue(m_PhotonVisionCommand);
     smooarmButtton.whileTrue(m_ArmOutCommand);
     inArmButton.whileTrue(m_ArmInCommand);
 
@@ -131,6 +132,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null;
+    return m_PhotonVisionCommand;
   }
 }

@@ -43,12 +43,12 @@ public class DriveSub extends SubsystemBase {
     rightDrive2.set(VictorSPXControlMode.PercentOutput, speed * Constants.DRIVE_SPEED);
   }
   public void setleftMotor(double speed){
-    leftDrive1.set(VictorSPXControlMode.PercentOutput, speed * Constants.DRIVE_SPEED);
-    leftDrive2.set(VictorSPXControlMode.PercentOutput, speed * Constants.DRIVE_SPEED);
+    leftDrive1.set(VictorSPXControlMode.PercentOutput, -speed * Constants.DRIVE_SPEED);
+    leftDrive2.set(VictorSPXControlMode.PercentOutput, -speed * Constants.DRIVE_SPEED);
   }
   public void setArcadeDrive(double forwardPower, double turnPower){
     setRightMotor(forwardPower - turnPower);
-    setleftMotor(-forwardPower + turnPower);
+    setleftMotor(forwardPower + turnPower);
   }
   public void turnRight(){
     setRightMotor(Constants.DRIVE_SPEED);
@@ -59,16 +59,16 @@ public class DriveSub extends SubsystemBase {
     setleftMotor(Constants.DRIVE_SPEED);
   }
   public void moveForward(){
-    setRightMotor(Constants.DRIVE_SPEED);
-    setleftMotor(Constants.DRIVE_SPEED);
+    setRightMotor(-Constants.DRIVE_SPEED*0.3);
+    setleftMotor(-Constants.DRIVE_SPEED*0.3);
   }
   public void stop(){
     setRightMotor(Constants.DRIVE_SPEED*0);
     setleftMotor(Constants.DRIVE_SPEED*0);
   }
   public void moveBackward(){
-    setRightMotor(Constants.DRIVE_SPEED);
-    setleftMotor(-Constants.DRIVE_SPEED);
+    setRightMotor(Constants.DRIVE_SPEED*0.5);
+    setleftMotor(Constants.DRIVE_SPEED*0.5);
   }
   public void slowMoveForward(){
     setRightMotor(Constants.DRIVE_SPEED*0.5);

@@ -14,7 +14,7 @@ public class DriveCommand extends CommandBase {
   private XboxController m_xboxController;
   
   private double leftStickY;
-  private double leftStickz;
+  private double leftStickZ;
 
   public DriveCommand(DriveSub subsystem, XboxController xboxController ) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -31,9 +31,9 @@ public class DriveCommand extends CommandBase {
   @Override
   public void execute() {
     leftStickY = m_xboxController.getRawAxis(Constants.LEFT_Y_AXIS);
-    leftStickz = m_xboxController.getRawAxis(2);
+    leftStickZ = m_xboxController.getRawAxis(2);
 
-    m_driveSub.setArcadeDrive(leftStickz, leftStickY * Constants.TURN_POWER);
+    m_driveSub.setArcadeDrive(-leftStickY/**Constants.DRIVE_SPEED*/,leftStickZ/*Constants.TURN_POWER*/);
   }
 
   // Called once the command ends or is interrupted.

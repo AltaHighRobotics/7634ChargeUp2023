@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -12,9 +13,12 @@ import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 public class smoothArmSub extends SubsystemBase {
   private WPI_TalonSRX m_smoothArmMotor;
+  private DigitalInput ArmIsNotOut = new DigitalInput(9);
+  private DigitalInput ArmIsNotIn = new DigitalInput(8);
   /** Creates a new smoothArmSub. */
   public smoothArmSub() {
     m_smoothArmMotor = new WPI_TalonSRX(Constants.ARM_SMOOTH_MOTOR);
@@ -37,5 +41,25 @@ public class smoothArmSub extends SubsystemBase {
 
   public void ArmStop(){
     m_smoothArmMotor.set(TalonSRXControlMode.PercentOutput,Constants.STOP);
+  }
+  public void CanWePutArmIn(){
+    if(ArmIsNotIn.get()){
+      System.out.println("We when arm out");
+      ArmIn();
+      SmartDashboard.putBoolean("Arm is extending", true);
+    }else {
+      ArmStop();
+    }
+    
+  }
+  public void CanWePutArmOut(){
+    if(ArmIsNotOut.get()){
+      System.out.println("we stop when arm in");
+      SmartDashboard.putBoolean("Arm is extending", false);
+      ArmOut();
+    }else {
+      ArmStop();
+    }
+    
   }
 }

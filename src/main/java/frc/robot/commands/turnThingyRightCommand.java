@@ -7,12 +7,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.turnThingySub;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.XboxController;
 
 public class turnThingyRightCommand extends CommandBase {
   private turnThingySub m_turnThingySub;
   private XboxController m_XboxController;
-  private double rightStickY;
+  private double rightStickZ;
   /** Creates a new turnThingyRightCommand. */
   public turnThingyRightCommand(turnThingySub turnThingySub,XboxController xboxController) {
     m_turnThingySub = turnThingySub;
@@ -28,8 +29,8 @@ public class turnThingyRightCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    rightStickY = m_XboxController.getRawAxis(Constants.LEFT_Y_AXIS); 
-    m_turnThingySub.turnLeftWitch(rightStickY*Constants.TURN_SPEED);
+    rightStickZ = m_XboxController.getRawAxis(Constants.RIGHT_Z_AXIS); 
+    m_turnThingySub.turnLeftRight(rightStickZ);
   }
 
   // Called once the command ends or is interrupted.

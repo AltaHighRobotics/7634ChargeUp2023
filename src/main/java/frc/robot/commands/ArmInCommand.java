@@ -29,7 +29,7 @@ public class ArmInCommand extends CommandBase {
   @Override
   public void execute() {
     
-    m_smoothArmSub.ArmIn();
+    m_smoothArmSub.CanWePutArmIn();
   }
 
   // Called once the command ends or is interrupted.

@@ -15,6 +15,8 @@ import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import frc.robot.Robot;
@@ -45,9 +47,11 @@ public class WinchSub extends SubsystemBase {
   }
   public void liftArm(double y_Axis){
     winchMotory.set(ControlMode.PercentOutput,y_Axis* Constants.WINCH_SPEED);
+    SmartDashboard.putBoolean("arm is lifting", true);
   }
   public void lowerWinch(){
     winchMotory.set(ControlMode.PercentOutput,-Constants.WINCH_SPEED);
+    SmartDashboard.putBoolean("arm is lifting", false);
   }
 //this function make lower the arm
   public void stopArm(){
