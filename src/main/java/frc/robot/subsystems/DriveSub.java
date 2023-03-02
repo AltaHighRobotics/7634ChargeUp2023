@@ -67,12 +67,12 @@ public class DriveSub extends SubsystemBase {
     setleftMotor(Constants.DRIVE_SPEED*0);
   }
   public void moveBackward(){
-    setRightMotor(Constants.DRIVE_SPEED*0.5);
-    setleftMotor(Constants.DRIVE_SPEED*0.5);
+    setRightMotor(Constants.DRIVE_SPEED*0.3);
+    setleftMotor(Constants.DRIVE_SPEED*0.3);
   }
   public void slowMoveForward(){
-    setRightMotor(Constants.DRIVE_SPEED*0.5);
-    setleftMotor(Constants.DRIVE_SPEED*0.5);
+    setRightMotor(Constants.DRIVE_SPEED*0.2);
+    setleftMotor(Constants.DRIVE_SPEED*0.2);
   }
   @Override
   public void periodic() {
