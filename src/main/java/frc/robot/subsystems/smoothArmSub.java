@@ -16,12 +16,12 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 public class smoothArmSub extends SubsystemBase {
-  private WPI_TalonSRX m_smoothArmMotor;
+  private VictorSPX m_smoothArmMotor;
   private DigitalInput ArmIsNotOut = new DigitalInput(9);
   private DigitalInput ArmIsNotIn = new DigitalInput(8);
   /** Creates a new smoothArmSub. */
   public smoothArmSub() {
-    m_smoothArmMotor = new WPI_TalonSRX(Constants.ARM_SMOOTH_MOTOR);
+    m_smoothArmMotor = new VictorSPX(Constants.ARM_SMOOTH_MOTOR);
 
     m_smoothArmMotor.configFactoryDefault();
     m_smoothArmMotor.setNeutralMode(NeutralMode.Brake);
@@ -31,32 +31,40 @@ public class smoothArmSub extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putBoolean("ArmIsNotOut switch", ArmIsNotOut.get());
+    SmartDashboard.putBoolean("ArmIsNotIn switch", ArmIsNotIn.get());
   }
+
   public void ArmOut(){
-    m_smoothArmMotor.set(TalonSRXControlMode.PercentOutput,Constants.ARMOUT_SPEED);
+    m_smoothArmMotor.set(VictorSPXControlMode.PercentOutput,-Constants.ARMOUT_SPEED);
   }
   public void ArmIn(){
-    m_smoothArmMotor.set(TalonSRXControlMode.PercentOutput,-Constants.ARMOUT_SPEED);
+    m_smoothArmMotor.set(VictorSPXControlMode.PercentOutput,Constants.ARMOUT_SPEED);
   }
 
   public void ArmStop(){
-    m_smoothArmMotor.set(TalonSRXControlMode.PercentOutput,Constants.STOP);
+    m_smoothArmMotor.set(VictorSPXControlMode.PercentOutput,Constants.STOP);
   }
   public void CanWePutArmIn(){
     if(ArmIsNotIn.get()){
-      System.out.println("We when arm out");
       ArmIn();
-      SmartDashboard.putBoolean("Arm is extending", true);
+      SmartDashboard.putBoolean("Arm is extending", false);
+
     }else {
+      SmartDashboard.putBoolean("Armisextending", true);
       ArmStop();
+
     }
     
+
   }
   public void CanWePutArmOut(){
     if(ArmIsNotOut.get()){
+      
       System.out.println("we stop when arm in");
-      SmartDashboard.putBoolean("Arm is extending", false);
+      SmartDashboard.putBoolean("Arm is extending", true);
       ArmOut();
+      
     }else {
       ArmStop();
     }

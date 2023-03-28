@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -15,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -26,13 +28,13 @@ import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 
 public class WinchSub extends SubsystemBase {
   //private WPI_TalonSRX winchMotory;
-  private VictorSPX winchMotory;
+  private TalonSRX winchMotory;
   
   
   /** Creates a new WinchSub. */
   public WinchSub() {
   //winchMotory = new WPI_TalonSRX(Constants.WINCH_MOTOR);
-  winchMotory = new VictorSPX(Constants.WINCH_MOTOR);
+  winchMotory = new TalonSRX(Constants.WINCH_MOTOR);
   
   
 
@@ -45,17 +47,14 @@ public class WinchSub extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  public void liftArm(double y_Axis){
-    winchMotory.set(ControlMode.PercentOutput,y_Axis* Constants.WINCH_SPEED);
-    SmartDashboard.putBoolean("arm is lifting", true);
+  public void SetWinchArm(double y_Axis){
+    winchMotory.set(TalonSRXControlMode.PercentOutput,y_Axis* Constants.WINCH_SPEED);
+    SmartDashboard.putBoolean("arm is moving", true);
   }
-  public void lowerWinch(){
-    winchMotory.set(ControlMode.PercentOutput,-Constants.WINCH_SPEED);
-    SmartDashboard.putBoolean("arm is lifting", false);
-  }
+
 //this function make lower the arm
   public void stopArm(){
-    winchMotory.set(ControlMode.PercentOutput, Constants.STOP);
+    winchMotory.set(TalonSRXControlMode.PercentOutput, Constants.STOP);
   }
   
 }

@@ -38,7 +38,7 @@ public class VisionSubsystem extends SubsystemBase {
     public VisionSubsystem() {
       camera = new PhotonCamera("LimeLight");
     }
-   
+
 
     @Override
     public void periodic() {
@@ -47,8 +47,8 @@ public class VisionSubsystem extends SubsystemBase {
         if (hasTarget) {
             this.result = result;
             // Get result.
-           result = camera.getLatestResult();
-           hasTarget = result.hasTargets();
+        //    result = camera.getLatestResult();
+        //  hasTarget = result.hasTargets();
            // Get targets.
            targetInfo = result.getTargets();
            target = result.getBestTarget();

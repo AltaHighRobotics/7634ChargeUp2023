@@ -24,13 +24,13 @@ public class CompressorSub extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  public void extendArm(){
+  public void openClaw(){
     extendCompressor.set(false);
     closeCompressor.set(true);
     System.out.println("True");
     SmartDashboard.putBoolean("Compressor", true);
   }
-  public void squishArm(){
+  public void closeClaw(){
     extendCompressor.set(true);
     closeCompressor.set(false);
 

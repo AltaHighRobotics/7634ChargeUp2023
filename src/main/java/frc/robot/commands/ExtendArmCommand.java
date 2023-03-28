@@ -29,7 +29,7 @@ public class ExtendArmCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_compressorSub.extendArm();
+    m_compressorSub.openClaw();
     phCompressor.enableDigital();
      //boolean enable = phCompressor.enabled();                                   
      //boolean pressureSwitch = phCompressor.getPressureSwitchValue();
@@ -42,7 +42,7 @@ public class ExtendArmCommand extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     System.out.println("claw close");
-    m_compressorSub.squishArm();
+    m_compressorSub.closeClaw();
 
   }
 

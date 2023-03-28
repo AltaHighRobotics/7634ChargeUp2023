@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.WinchSub;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.Constants;
 public class LiftWinchCommand extends CommandBase {
   private XboxController m_XboxController;
   private WinchSub m_winchSub;
@@ -27,9 +28,10 @@ public class LiftWinchCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    y_Axis = -m_XboxController.getLeftY();
     
-    m_winchSub.liftArm(y_Axis);
+    y_Axis = -m_XboxController.getRawAxis(Constants.LEFT_Y_AXIS);
+    
+    m_winchSub.SetWinchArm(y_Axis);
   }
 
   // Called once the command ends or is interrupted.

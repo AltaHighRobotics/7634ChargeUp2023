@@ -4,40 +4,25 @@
 
 package frc.robot.commands;
 
-import java.time.Instant;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.WinchSub;
 
-public class LowerWinchCommand extends CommandBase {
-
-private WinchSub m_winchSub;
-
-  /** Creates a new LiftWinchCommand. */
-  public LowerWinchCommand(WinchSub winchSub) {
-
-    m_winchSub = winchSub;
-    addRequirements(m_winchSub);
-      // Use addRequirements() here to declare subsystem dependencies.
+public class BottomPutClawBack extends CommandBase {
+  /** Creates a new BottomPutClawBack. */
+  public BottomPutClawBack() {
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    System.out.println("work");
-   }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    m_winchSub.lowerWinch();
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_winchSub.stopArm();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

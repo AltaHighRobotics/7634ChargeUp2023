@@ -18,9 +18,9 @@ public final class Constants {
    public static final int LEFT_DRIVE_1 = 3;
    public static final int RIGHT_DRIVE_1 = 1;
    public static final int LEFT_DRIVE_2 = 2  ;
-   public static final int ARM_SMOOTH_MOTOR = 7;
+   public static final int ARM_SMOOTH_MOTOR = 6;
    public static final int TURN_MOTOR = 5;
-   public static final int WINCH_MOTOR = 6;
+   public static final int WINCH_MOTOR = 7;
    public static final int SHOOTER_MOTOR = 9;
    public static final int RIGHT_DRIVE_2 = 4;
    
@@ -29,11 +29,11 @@ public final class Constants {
    public static final int PULL_MOTOR = 55;
 
    //SPEED VALUES
-   public static final double DRIVE_SPEED = -0.8;
-   public static final double TURN_POWER = 0.7;
-   public static final double WINCH_SPEED = 0.6;
+   public static final double DRIVE_SPEED = 0.65;
+   public static final double TURN_POWER = 0.5;
+   public static final double WINCH_SPEED = 0.8;
    //Turn speed 
-   public static final double BIG_GEAR = 0.8;
+   public static final double BIG_GEAR = 0.86;
    //Puller speed
 
    public static final double PULL_SPEED = 0.5;
@@ -90,6 +90,9 @@ public final class Constants {
 
    //LimeLight sub
    public static final int USB_CAMERA_NAME = 0;
+
+   // Auto.
+   public static final double AUTO_BALANCE_THRSHOLD = 8.0;
 
 }
 
